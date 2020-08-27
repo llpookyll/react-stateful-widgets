@@ -46,15 +46,17 @@ export default function Input() {
     const { value } = evt.target;
 
     /* STEP 4 */
+    setInputValue(value);
   };
   const reset = () => {
     /* STEP 5 */
+    setInputValue('');
   };
 
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue', /* STEP 2 */
+    color: (inputValue.length>10) ? 'crimson' : 'royalblue', /* STEP 2 */
   };
 
   return (
@@ -62,7 +64,7 @@ export default function Input() {
       <h2>Input</h2>
       <div style={style}></div> {/* STEP 3 */}
       <div>
-        <input type='text' onChange={changeInput} /> {/* STEP 6 */}
+        {inputValue.length>10?<input style={style} type='text' onChange={changeInput} value={inputValue} /> : <input style={style} type='text' onChange={changeInput} value={inputValue} />} {/* STEP 6 */}
         <button onClick={reset}>Reset</button>
       </div>
     </div>
