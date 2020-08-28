@@ -23,7 +23,7 @@ export default function Squares() {
   // Use the state hook twice, as we need two slices of state: 'squares' and
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square (if any).
-  let [] = useState(listOfSquareIds);
+  let [square] = useState(listOfSquareIds);
   let [activeSq, setActiveSq] = useState(null);
 
   const getClassName = id => {
@@ -50,7 +50,7 @@ export default function Squares() {
           /* Nasty bug! We should map over a slice of state, instead of 'listOfSquareIds'.
           We might say: "it works, though!" But if the list of squares is not state,
           we could never add squares, change squares or remove squares in the future. Fix!" */
-          listOfSquareIds.map(id =>
+          square.map(id =>
             <div
               id={id}
               key={id}
